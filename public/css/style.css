@@ -1,0 +1,221 @@
+body
+{
+    background: #020711;
+	background-image: radial-gradient(#0c172e 1px, transparent 0);
+	background-size: 40px 40px;
+	background-position: -19px -19px;
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.header
+{
+    background: #162644;
+    border-bottom: 1px solid white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.header img
+{
+    height: 80%;
+}
+
+.content
+{
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 62px);
+    margin-top: 62px;
+    display: flex;
+    align-items: center;
+}
+
+.skin-container
+{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    transition: 0.5s;
+}
+
+.content .skin-container:first-child
+{
+    border-right: 2px solid #020711;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .skin-container:last-child
+{
+    border-left: 2px solid #0c172e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skin-card
+{
+    background: #9696962e;
+    height: 85%;
+    width: 85%;
+    border-radius: 7px;
+    border: 2px solid #96969694;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.skin-card:hover
+{
+    transition: 0.3s;
+    -webkit-box-shadow: 0px 0px 23px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 23px 0px rgba(0,0,0,0.55);
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.data-skin-img
+{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.data-skin-img img
+{
+    max-width: 95%;
+    max-height: 95%;
+}
+
+.data-skin-container
+{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #12121252;
+
+}
+
+.market_hash_name
+{
+    font-size: x-large;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.float_value
+{
+    font-size: larger;
+    color: white;
+    padding: 10px;
+}
+
+.itemCard_Consumer      { border-bottom: 3px solid #847B6E; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #847b6e3a 100%);}
+.itemCard_Industrial    { border-bottom: 3px solid #5E98D9; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #5E98D93a 100%);}
+.itemCard_Mil-SpecGrade { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Restricted    { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Classified    { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Covert        { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+.itemCard_Contraband    { border-bottom: 3px solid #E4AE39; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #E4AE393a 100%);}
+.itemCard_Distinguished { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Exceptional   { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Superior      { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Master        { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+.itemCard_HighGrade     { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Remarkable    { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Exotic        { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Extraordinary { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+
+.counter-reveal
+{
+    position: absolute;
+    color: white;
+    font-size: larger;
+    transform: scale(3.5);
+    width: 31%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    transition: 0.2s;
+}
+
+.score
+{
+    position: absolute;
+    color: white;
+    display: flex;
+    gap: 3vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.login-steam
+{
+    padding: 7px 13px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    background: #171D25;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.login-steam:hover
+{
+    opacity: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.steam-card
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    gap: 3vw;
+
+}
+
+.steam-card img
+{
+    border-radius: 50px;
+    border: 2px solid white;
+}
+
+.rank
+{
+    background-color: #0c172e;
+    border: 1px solid #ffc400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 65%;
+    width: 90px;
+    border-radius: 5px;
+}
+
+.rank img
+{
+    border: none !important;
+    height: 100%;
+}
