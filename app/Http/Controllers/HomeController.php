@@ -31,12 +31,18 @@ class HomeController extends Controller
         $data  = json_decode($file, true);
 
         foreach($data as $key => $value) {
-            $item = new DListeSkinCS2();
-            $item->market_hash_name = $key;
-            $item->steam_id = $value;
-            $item->save();
 
-            echo($item->market_hash_name . "<br>");
+            $checkItem = DListeSkinCS2::where('steam_id', $value)->first();
+
+            if(!isset($checkItem))
+            {
+                $item = new DListeSkinCS2();
+                $item->market_hash_name = $key;
+                $item->steam_id = $value;
+                $item->save();
+
+                echo($item->market_hash_name . "<br>");
+            }
         }
 
         dd('OK DONE');
