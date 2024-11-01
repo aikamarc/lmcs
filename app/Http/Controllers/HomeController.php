@@ -24,6 +24,24 @@ class HomeController extends Controller
         return view('index', $view_params);
     }
 
+    public function loadSkin($token)
+    {
+        if($token != "MARCPASSOK") { dd('403'); }
+        $file = file_get_contents(asset('cs2.json'));
+        $data  = json_decode($file, true);
+
+        foreach($data as $key => $value) {
+            $item = new DListeSkinCS2();
+            $item->market_hash_name = $key;
+            $item->steam_id = $value;
+            $item->save();
+
+            echo($item->market_hash_name . "<br>");
+        }
+
+        dd('OK DONE');
+    }
+
     public function getSkin(Request $request)
     {
         while(!isset($data['data'][0]['item']))
