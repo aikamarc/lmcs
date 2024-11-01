@@ -26,6 +26,8 @@ class HomeController extends Controller
 
     public function getSkin(Request $request)
     {
+        dd('BREAK TEMP');
+
         while(!isset($data['data'][0]['item']))
         {
             $randomSkin = DListeSkinCS2::inRandomOrder()->first();
@@ -36,6 +38,11 @@ class HomeController extends Controller
                 'market_hash_name' => $randomSkin->market_hash_name,
             ];
             $response = Http::withHeaders(['Authorization' => env('CSFLOAT_KEY')])->get($url, $params);
+
+            if($response->status() == 429) {
+                dd('TO_MANY_REQUEST');
+            }
+
             $data = json_decode($response->body(), true);
         }
 
@@ -93,9 +100,9 @@ class HomeController extends Controller
                 if($user->personnal_best >= 35)  { $user->rank_id = 8;   }
                 if($user->personnal_best >= 30)  { $user->rank_id = 7;   }
                 if($user->personnal_best >= 25)  { $user->rank_id = 6;   }
-                if($user->personnal_best >= 4)  { $user->rank_id = 5;   }
-                if($user->personnal_best >= 3)  { $user->rank_id = 4;   }
-                if($user->personnal_best >= 2)  { $user->rank_id = 3;   }
+                if($user->personnal_best >= 4)   { $user->rank_id = 5;   }
+                if($user->personnal_best >= 3)   { $user->rank_id = 4;   }
+                if($user->personnal_best >= 2)   { $user->rank_id = 3;   }
                 if($user->personnal_best >= 1)   { $user->rank_id = 2;   }
 
                 Session::put('user', $user);
