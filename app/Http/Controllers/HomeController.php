@@ -122,10 +122,10 @@ class HomeController extends Controller
                 if($user->personnal_best >= 35)  { $user->rank_id = 8;   }
                 if($user->personnal_best >= 30)  { $user->rank_id = 7;   }
                 if($user->personnal_best >= 25)  { $user->rank_id = 6;   }
-                if($user->personnal_best >= 4)   { $user->rank_id = 5;   }
-                if($user->personnal_best >= 3)   { $user->rank_id = 4;   }
-                if($user->personnal_best >= 2)   { $user->rank_id = 3;   }
-                if($user->personnal_best >= 1)   { $user->rank_id = 2;   }
+                if($user->personnal_best >= 20)  { $user->rank_id = 5;   }
+                if($user->personnal_best >= 15)  { $user->rank_id = 4;   }
+                if($user->personnal_best >= 10)  { $user->rank_id = 3;   }
+                if($user->personnal_best >= 5)   { $user->rank_id = 2;   }
 
                 Session::put('user', $user);
 
