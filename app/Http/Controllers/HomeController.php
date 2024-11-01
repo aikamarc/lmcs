@@ -26,8 +26,6 @@ class HomeController extends Controller
 
     public function getSkin(Request $request)
     {
-        dd('BREAK TEMP');
-
         while(!isset($data['data'][0]['item']))
         {
             $randomSkin = DListeSkinCS2::inRandomOrder()->first();
