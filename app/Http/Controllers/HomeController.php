@@ -50,7 +50,7 @@ class HomeController extends Controller
 
     public function getSkin(Request $request)
     {
-        while(!isset($data['data'][0]['item']))
+        while(!isset($data['data'][0]['price']))
         {
             $randomSkin = DListeSkinCS2::inRandomOrder()->first();
 
@@ -67,14 +67,12 @@ class HomeController extends Controller
             }
 
             $data = json_decode($response->body(), true);
-
-            if(isset($data['data'][0]['item'])) {
-                $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
-                $randomSkin->save();
-            }
         }
 
         $item = $data['data'][0]['item'];
+
+        $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
+        $randomSkin->save();
 
         $view_params = [];
         $view_params['skin'] = $item;
