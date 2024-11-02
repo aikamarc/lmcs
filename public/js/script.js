@@ -80,7 +80,7 @@ function selectSkin(side) {
             setTimeout(() => {
                 if(response.result == "W") { score++;   }
                 else                       {
-                    if(pb > score) {
+                    if(pb < score) {
                         pb = score;
                         $('#best_score').html(pb);
 
