@@ -58,6 +58,7 @@ class HomeController extends Controller
             $params = [
                 'type' => 'buy_now',
                 'market_hash_name' => $randomSkin->market_hash_name,
+                'min_price' => 3,
             ];
             $response = Http::withHeaders(['Authorization' => env('CSFLOAT_KEY')])->get($url, $params);
 
@@ -65,13 +66,13 @@ class HomeController extends Controller
                 dd('TO_MANY_REQUEST');
             }
 
+            $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
+            $randomSkin->save();
+
             $data = json_decode($response->body(), true);
         }
 
         $item = $data['data'][0]['item'];
-
-        $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
-        $randomSkin->save();
 
         $view_params = [];
         $view_params['skin'] = $item;
