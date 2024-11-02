@@ -66,10 +66,12 @@ class HomeController extends Controller
                 dd('TO_MANY_REQUEST');
             }
 
-            $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
-            $randomSkin->save();
-
             $data = json_decode($response->body(), true);
+
+            if(isset($data['data'][0]['item'])) {
+                $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
+                $randomSkin->save();
+            }
         }
 
         $item = $data['data'][0]['item'];
