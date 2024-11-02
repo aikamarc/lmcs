@@ -9,6 +9,8 @@ let skin_right = "";
 $(document).ready(function() {
     loadSkin('l');
     loadSkin('r');
+
+    pb = parseFloat($('#best_score').html());
 });
 
 function loadSkin(side) {
