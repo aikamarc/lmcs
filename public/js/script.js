@@ -57,7 +57,7 @@ function selectSkin(side) {
             let interval_l = setInterval(() => {
                 float_l += increment_l;
                 let scale = 1 + (float_l / target_l) * 0.5; // Ajuste le facteur d'échelle
-                if (float_l >= target_l) {
+                if (float_l > target_l) {
                     float_l = target_l;
                     clearInterval(interval_l);
                 }
@@ -71,7 +71,7 @@ function selectSkin(side) {
             let interval_r = setInterval(() => {
                 float_r += increment_r;
                 let scale = 1 + (float_r / target_r) * 0.5;
-                if (float_r >= target_r) {
+                if (float_r > target_r) {
                     float_r = target_r;
                     clearInterval(interval_r);
                 }
