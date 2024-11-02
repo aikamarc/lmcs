@@ -75,24 +75,24 @@ class HomeController extends Controller
             if($request->pb > $user->personnal_best) {
                 $user->personnal_best = $request->pb;
 
-                if($user->personnal_best >= 90)      { $user->rank_id = 19;  }
-                elseif($user->personnal_best >= 85)  { $user->rank_id = 18;  }
-                elseif($user->personnal_best >= 80)  { $user->rank_id = 17;  }
-                elseif($user->personnal_best >= 75)  { $user->rank_id = 16;  }
-                elseif($user->personnal_best >= 70)  { $user->rank_id = 15;  }
-                elseif($user->personnal_best >= 65)  { $user->rank_id = 14;  }
-                elseif($user->personnal_best >= 60)  { $user->rank_id = 13;  }
-                elseif($user->personnal_best >= 55)  { $user->rank_id = 12;  }
-                elseif($user->personnal_best >= 50)  { $user->rank_id = 11;  }
-                elseif($user->personnal_best >= 45)  { $user->rank_id = 10;  }
-                elseif($user->personnal_best >= 40)  { $user->rank_id = 9;   }
-                elseif($user->personnal_best >= 35)  { $user->rank_id = 8;   }
-                elseif($user->personnal_best >= 30)  { $user->rank_id = 7;   }
-                elseif($user->personnal_best >= 25)  { $user->rank_id = 6;   }
-                elseif($user->personnal_best >= 20)  { $user->rank_id = 5;   }
-                elseif($user->personnal_best >= 15)  { $user->rank_id = 4;   }
-                elseif($user->personnal_best >= 10)  { $user->rank_id = 3;   }
-                elseif($user->personnal_best >= 5)   { $user->rank_id = 2;   }
+                if($user->personnal_best >= 100)     { $user->rank_id = 19;  }
+                elseif($user->personnal_best >= 75)  { $user->rank_id = 18;  }
+                elseif($user->personnal_best >= 60)  { $user->rank_id = 17;  }
+                elseif($user->personnal_best >= 50)  { $user->rank_id = 16;  }
+                elseif($user->personnal_best >= 40)  { $user->rank_id = 15;  }
+                elseif($user->personnal_best >= 35)  { $user->rank_id = 14;  }
+                elseif($user->personnal_best >= 30)  { $user->rank_id = 13;  }
+                elseif($user->personnal_best >= 25)  { $user->rank_id = 12;  }
+                elseif($user->personnal_best >= 20)  { $user->rank_id = 11;  }
+                elseif($user->personnal_best >= 15)  { $user->rank_id = 10;  }
+                elseif($user->personnal_best >= 12)  { $user->rank_id = 9;   }
+                elseif($user->personnal_best >= 9)   { $user->rank_id = 8;   }
+                elseif($user->personnal_best >= 7)   { $user->rank_id = 7;   }
+                elseif($user->personnal_best >= 5)   { $user->rank_id = 6;   }
+                elseif($user->personnal_best >= 4)   { $user->rank_id = 5;   }
+                elseif($user->personnal_best >= 3)   { $user->rank_id = 4;   }
+                elseif($user->personnal_best >= 2)   { $user->rank_id = 3;   }
+                elseif($user->personnal_best >= 1)   { $user->rank_id = 2;   }
 
                 $user->save();
 
