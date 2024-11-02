@@ -21,7 +21,6 @@ function loadSkin(side) {
         }
     })
     .done(function(response) {
-        console.log(response);
         $(`#preview_skin_${side}`).html(response);
     });
 }
@@ -48,7 +47,6 @@ function selectSkin(side) {
             },
         })
         .done(function(response) {
-
             // Animation reveal prix
             let float_l = 0.00;
             let target_l = response.skinL;
@@ -82,7 +80,7 @@ function selectSkin(side) {
             setTimeout(() => {
                 if(response.result == "W") { score++;   }
                 else                       {
-                    if(pb < score) {
+                    if(pb > score) {
                         pb = score;
                         $('#best_score').html(pb);
 
@@ -90,8 +88,7 @@ function selectSkin(side) {
                             url: '/updatePb',
                             type: 'POST',
                             headers: {  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  },
-                            data:
-                            {
+                            data: {
                                 pb,
                             },
                         })

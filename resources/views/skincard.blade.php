@@ -18,8 +18,6 @@
         <div class="float_value">
             @if(isset($skin['float_value']))
                 {{ $skin['float_value'] }}
-            @else
-                0
             @endif
         </div>
     </div>

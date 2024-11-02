@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DListeSkinCS2;
 use App\Models\Users;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -21,58 +22,23 @@ class HomeController extends Controller
             Session::put('user', $user);
         }
 
+        $view_params['countSkins'] = DListeSkinCS2::where('price', '!=', null)->count();
+
         return view('index', $view_params);
-    }
-
-    public function loadSkin($token)
-    {
-        if($token != "MARCPASSOK") { dd('403'); }
-        $file = file_get_contents(asset('cs2.json'));
-        $data  = json_decode($file, true);
-
-        foreach($data as $key => $value) {
-
-            $checkItem = DListeSkinCS2::where('steam_id', $value)->first();
-
-            if(!isset($checkItem))
-            {
-                $item = new DListeSkinCS2();
-                $item->market_hash_name = $key;
-                $item->steam_id = $value;
-                $item->save();
-
-                echo($item->market_hash_name . "<br>");
-            }
-        }
-
-        dd('OK DONE');
     }
 
     public function getSkin(Request $request)
     {
-        while(!isset($data['data'][0]['price']))
-        {
-            $randomSkin = DListeSkinCS2::inRandomOrder()->first();
+        $randomSkin = DListeSkinCS2::where('price', '!=', null)->inRandomOrder()->first();
 
-            $url = "https://csfloat.com/api/v1/listings";
-            $params = [
-                'type' => 'buy_now',
-                'market_hash_name' => $randomSkin->market_hash_name,
-                'min_price' => 3,
-            ];
-            $response = Http::withHeaders(['Authorization' => env('CSFLOAT_KEY')])->get($url, $params);
-
-            if($response->status() == 429) {
-                dd('TO_MANY_REQUEST');
-            }
-
-            $data = json_decode($response->body(), true);
-        }
-
-        $item = $data['data'][0]['item'];
-
-        $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
-        $randomSkin->save();
+        $item = [
+            'rarity_name'       => $randomSkin->rarity_name,
+            'cs2_screenshot_id' => $randomSkin->cs2_screenshot_id,
+            'icon_url'          => $randomSkin->icon_url,
+            'market_hash_name'  => $randomSkin->market_hash_name,
+            'paint_seed'        => $randomSkin->paint_seed,
+            'float_value'       => $randomSkin->float_value,
+        ];
 
         $view_params = [];
         $view_params['skin'] = $item;
@@ -109,31 +75,91 @@ class HomeController extends Controller
             if($request->pb > $user->personnal_best) {
                 $user->personnal_best = $request->pb;
 
-                if($user->personnal_best >= 90)  { $user->rank_id = 19;  }
-                if($user->personnal_best >= 85)  { $user->rank_id = 18;  }
-                if($user->personnal_best >= 80)  { $user->rank_id = 17;  }
-                if($user->personnal_best >= 75)  { $user->rank_id = 16;  }
-                if($user->personnal_best >= 70)  { $user->rank_id = 15;  }
-                if($user->personnal_best >= 65)  { $user->rank_id = 14;  }
-                if($user->personnal_best >= 60)  { $user->rank_id = 13;  }
-                if($user->personnal_best >= 55)  { $user->rank_id = 12;  }
-                if($user->personnal_best >= 50)  { $user->rank_id = 11;  }
-                if($user->personnal_best >= 45)  { $user->rank_id = 10;  }
-                if($user->personnal_best >= 40)  { $user->rank_id = 9;   }
-                if($user->personnal_best >= 35)  { $user->rank_id = 8;   }
-                if($user->personnal_best >= 30)  { $user->rank_id = 7;   }
-                if($user->personnal_best >= 25)  { $user->rank_id = 6;   }
-                if($user->personnal_best >= 20)  { $user->rank_id = 5;   }
-                if($user->personnal_best >= 15)  { $user->rank_id = 4;   }
-                if($user->personnal_best >= 10)  { $user->rank_id = 3;   }
-                if($user->personnal_best >= 5)   { $user->rank_id = 2;   }
-
-                Session::put('user', $user);
+                if($user->personnal_best >= 90)      { $user->rank_id = 19;  }
+                elseif($user->personnal_best >= 85)  { $user->rank_id = 18;  }
+                elseif($user->personnal_best >= 80)  { $user->rank_id = 17;  }
+                elseif($user->personnal_best >= 75)  { $user->rank_id = 16;  }
+                elseif($user->personnal_best >= 70)  { $user->rank_id = 15;  }
+                elseif($user->personnal_best >= 65)  { $user->rank_id = 14;  }
+                elseif($user->personnal_best >= 60)  { $user->rank_id = 13;  }
+                elseif($user->personnal_best >= 55)  { $user->rank_id = 12;  }
+                elseif($user->personnal_best >= 50)  { $user->rank_id = 11;  }
+                elseif($user->personnal_best >= 45)  { $user->rank_id = 10;  }
+                elseif($user->personnal_best >= 40)  { $user->rank_id = 9;   }
+                elseif($user->personnal_best >= 35)  { $user->rank_id = 8;   }
+                elseif($user->personnal_best >= 30)  { $user->rank_id = 7;   }
+                elseif($user->personnal_best >= 25)  { $user->rank_id = 6;   }
+                elseif($user->personnal_best >= 20)  { $user->rank_id = 5;   }
+                elseif($user->personnal_best >= 15)  { $user->rank_id = 4;   }
+                elseif($user->personnal_best >= 10)  { $user->rank_id = 3;   }
+                elseif($user->personnal_best >= 5)   { $user->rank_id = 2;   }
 
                 $user->save();
+
+                Session::put('user', $user);
             }
         }
 
         return response()->json(['result' => 'OK']);
     }
+
+    public function loadSkin($token)
+    {
+        if($token != "MARCPASSOK") { dd('403'); }
+        $file = file_get_contents(asset('cs2.json'));
+        $data  = json_decode($file, true);
+
+        foreach($data as $key => $value) {
+
+            $checkItem = DListeSkinCS2::where('steam_id', $value)->first();
+
+            if(!isset($checkItem))
+            {
+                $item = new DListeSkinCS2();
+                $item->market_hash_name = $key;
+                $item->steam_id = $value;
+                $item->save();
+
+                echo($item->market_hash_name . "<br>");
+            }
+        }
+
+        dd('OK DONE');
+    }
+
+    public function loadPrice($token)
+    {
+        if($token != "MARCPASSOK") { dd('403'); }
+
+        while(1 == 1)
+        {
+            $randomSkin = DListeSkinCS2::where('price', null)->inRandomOrder()->first();
+
+            $url = "https://csfloat.com/api/v1/listings";
+            $params = [
+                'type' => 'buy_now',
+                'market_hash_name' => $randomSkin->market_hash_name,
+                'min_price' => 3,
+            ];
+            $response = Http::withHeaders(['Authorization' => env('CSFLOAT_KEY')])->get($url, $params);
+
+            if($response->status() == 429) { dd('TO_MANY_REQUEST'); }
+
+            $data = json_decode($response->body(), true);
+
+            if(isset($data['data'][0]['price'])) {
+                $randomSkin->price = number_format($data['data'][0]['price'] / 100, 2, '.', '');
+                $randomSkin->rarity_name       = $data['data'][0]['item']['rarity_name'];
+                $randomSkin->icon_url          = $data['data'][0]['item']['icon_url'];
+                if(isset($data['data'][0]['item']['paint_seed']))        { $randomSkin->paint_seed        = $data['data'][0]['item']['paint_seed'];        }
+                if(isset($data['data'][0]['item']['float_value']))       { $randomSkin->float_value       = $data['data'][0]['item']['float_value'];       }
+                if(isset($data['data'][0]['item']['cs2_screenshot_id'])) { $randomSkin->cs2_screenshot_id = $data['data'][0]['item']['cs2_screenshot_id']; }
+                $randomSkin->last_update = Carbon::now();
+                $randomSkin->save();
+
+                echo($randomSkin->market_hash_name . "<br>");
+            }
+        }
+    }
+
 }

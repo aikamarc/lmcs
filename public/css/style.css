@@ -84,7 +84,7 @@ body
 .data-skin-img
 {
     width: 100%;
-    height: 90%;
+    height: 83%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,7 +100,7 @@ body
 
 .data-skin-container
 {
-    height: 10%;
+    height: 17%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -125,21 +125,21 @@ body
     padding: 10px;
 }
 
-.itemCard_Consumer      { border-bottom: 3px solid #847B6E; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #847b6e3a 100%);}
-.itemCard_Industrial    { border-bottom: 3px solid #5E98D9; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #5E98D93a 100%);}
-.itemCard_Mil-SpecGrade { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
-.itemCard_Restricted    { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
-.itemCard_Classified    { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
-.itemCard_Covert        { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
-.itemCard_Contraband    { border-bottom: 3px solid #E4AE39; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #E4AE393a 100%);}
-.itemCard_Distinguished { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
-.itemCard_Exceptional   { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
-.itemCard_Superior      { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
-.itemCard_Master        { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
-.itemCard_HighGrade     { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
-.itemCard_Remarkable    { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
-.itemCard_Exotic        { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
-.itemCard_Extraordinary { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+.itemCard_Consumer        { border-bottom: 3px solid #847B6E; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #847b6e3a 100%);}
+.itemCard_IndustrialGrade { border-bottom: 3px solid #5E98D9; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #5E98D93a 100%);}
+.itemCard_Mil-SpecGrade   { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Restricted      { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Classified      { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Covert          { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+.itemCard_Contraband      { border-bottom: 3px solid #E4AE39; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #E4AE393a 100%);}
+.itemCard_Distinguished   { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Exceptional     { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Superior        { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Master          { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
+.itemCard_HighGrade       { border-bottom: 3px solid #3F61FF; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #3F61FF3a 100%);}
+.itemCard_Remarkable      { border-bottom: 3px solid #49347C; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #49347C3a 100%);}
+.itemCard_Exotic          { border-bottom: 3px solid #D32CE6; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #D32CE63a 100%);}
+.itemCard_Extraordinary   { border-bottom: 3px solid #EB4B4B; background: linear-gradient(rgba(27, 29, 36, 0) 20%, #EB4B4B3a 100%);}
 
 .counter-reveal
 {
@@ -218,4 +218,14 @@ body
 {
     border: none !important;
     height: 100%;
+}
+
+.logo_count
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    gap: 2vw;
+    color: white;
 }

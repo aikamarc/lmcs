@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //  ROUTES
-
 Route::GET('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::GET('/loadSkin/{token}', [App\Http\Controllers\HomeController::class, 'loadSkin'])->name('loadSkin');
 
 Route::POST('/getSkin', [App\Http\Controllers\HomeController::class, 'getSkin'])->name('getSkin');
 Route::POST('/selectSkin', [App\Http\Controllers\HomeController::class, 'selectSkin'])->name('selectSkin');
@@ -24,3 +22,7 @@ Route::POST('/updatePb', [App\Http\Controllers\HomeController::class, 'updatePb'
 
 // AUTH
 Route::GET('/auth', [App\Http\Controllers\SteamController::class, 'auth'])->name('auth');
+
+// ADMIN
+Route::GET('/loadSkin/{token}', [App\Http\Controllers\HomeController::class, 'loadSkin'])->name('loadSkin');
+Route::GET('/loadPrice/{token}', [App\Http\Controllers\HomeController::class, 'loadPrice'])->name('loadPrice');

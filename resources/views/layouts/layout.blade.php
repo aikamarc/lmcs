@@ -15,7 +15,12 @@
     </head>
     <body>
         <div class="header">
-            <img src="{{ asset('media/logo.png') }}">
+            <div class="logo_count">
+                <img src="{{ asset('media/logo.png') }}">
+                @if(isset($countSkins))
+                    <div>Database <b>{{ $countSkins }}</b> items</div>
+                @endif
+            </div>
             <div class="score">
                 <div>
                     SCORE
